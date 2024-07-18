@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Expenditure>
+
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+    </head>
+    <body>
+    @if (Model.Count() > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Date</td>
+                    <td>Price</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Expenditure expenditure in Model)
+                {
+                    <tr>
+                        <td>@expenditure.Name</td>
+                        <td>@expenditure.Date</td>
+                        <td>@expenditure.Price €</td>
+                    </tr>
+                }
+            </tbody>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Sum</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>@Model.Sum(x => x.Price)</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Pas de données. Cheh.</p>
+    }
+</body>
+    </html>
